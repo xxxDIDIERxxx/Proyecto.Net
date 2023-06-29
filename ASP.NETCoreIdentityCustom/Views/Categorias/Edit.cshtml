@@ -1,0 +1,48 @@
+﻿@model ASP.NETCoreIdentityCustom.Models.Categoria//Modelo a trabajar
+@{
+    Layout = null;
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Editar categoria</h3>
+            <h5>Recuerda que no se puede cambiar el nombre de la categoria porque esta relacionada con las tareas</h5>
+            <h5>Asegurate de que escribas correctamente el nombre al crear la tarea</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+            <form method="post" asp-action="Edit">
+                <input asp-for="IdCategoria" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="NombreCategoria" class="control-label"></label>
+                    <input asp-for="NombreCategoria" class="form-control" />
+                    <span asp-validation-for="NombreCategoria" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ColorCategoria" class="control-label"></label>
+                    <input asp-for="ColorCategoria" class="form-control" />
+                    <span asp-validation-for="ColorCategoria" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Editar Categoria" class="btn btn-outline-primary" />
+                    <a class="btn btn-outline-primary" href="@Url.Action("Index")">Volver</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

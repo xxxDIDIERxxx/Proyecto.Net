@@ -1,0 +1,51 @@
+﻿@model ASP.NETCoreIdentityCustom.Models.Tarea
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>¿SEGURO QUE QUIERES ELIMINAR ESTA CATEGORIA?</h3>
+<div>
+    <h4>Tarea</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreTarea)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreTarea)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DescripcionTarea)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DescripcionTarea)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoriaNavigation.NombreCategoria)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdTarea" />
+        <input type="submit" value="Eliminar" class="btn btn-outline-danger" />
+        <a class="btn btn-outline-primary" href="@Url.Action("Index")">Volver</a>
+    </form>
+</div>

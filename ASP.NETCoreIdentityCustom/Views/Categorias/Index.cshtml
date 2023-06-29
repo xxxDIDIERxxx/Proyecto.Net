@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ASP.NETCoreIdentityCustom.Models.Categoria>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Categorias</h1>
+
+<div class="container">
+
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" date-dismiss="alert" arial-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>lista de categorias</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-outline-success d-block" asp-action="Create" asp-controller="Categorias">Agregar nueva categoria</a>
+        </div>
+    </div>
+
+    <div class="row">
+
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td>@Html.DisplayNameFor(a => a.IdCategoria)</td>
+                        <td>@Html.DisplayNameFor(a => a.NombreCategoria)</td>
+                        <td>@Html.DisplayNameFor(a => a.ColorCategoria)</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--para que se recorran los registros-->
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdCategoria</td>
+                            <td>@item.NombreCategoria</td>
+                            <td>@item.ColorCategoria</td>
+
+                            <td>
+                                <a asp-controller="Categorias" asp-action="Edit" asp-route-id="@item.IdCategoria" class="btn btn-outline-secondary">Editar</a>
+                                <a asp-controller="Categorias" asp-action="Delete" asp-route-id="@item.IdCategoria" class="btn btn-outline-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No existen registros</p>
+        }
+    </div>
+</div>

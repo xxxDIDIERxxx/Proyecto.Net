@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ASP.NETCoreIdentityCustom.Models.Proyecto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoRiesgo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaClienteNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoRiesgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaClienteNavigation.Cedula)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <link href="~/css/users.css" rel="stylesheet" />
+    <link rel="icon" type="~/images/jj.png" href="jj.png" />
+    <title>Paracelsoft</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="home-content">
+        <div class="overview-boxes">
+            <a asp-action="Create">Crear Proyecto</a>
+        </div>
+
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="sales-details">
+                    @if (@Model != null && @Model.Any())
+                    {
+                        <table class="details">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Tipo de riesgo</th>
+                                <th>Cedula cliente</th>
+                                <th>Acciones</th>
+                            </tr>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td>@user.Nombre</td>
+                                    <td>@user.Fecha</td>
+                                    <td>@user.TipoRiesgo</td>
+                                    <td>@user.CedulaCliente</td>
+                                    <td>
+                                        <a asp-controller="Proyectos" asp-action="Edit" asp-route-id="@user.Id">Editar</a> |
+                                        <a asp-controller="Proyectos" asp-action="Delete" asp-route-id="@user.Id">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

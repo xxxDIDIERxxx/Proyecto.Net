@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ASP.NETCoreIdentityCustom.Models.Tarea>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success">Crear Nueva Tarea</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTarea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionTarea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaNavigation)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreTarea)
+                </td>
+                <td>
+                    <div class="descripcion-tarea">
+                        @Html.DisplayFor(modelItem => item.DescripcionTarea)
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaNavigation.NombreCategoria)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdTarea" class="btn btn-outline-secondary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdTarea" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

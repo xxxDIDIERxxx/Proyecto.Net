@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ASP.NETCoreIdentityCustom.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <link href="~/css/users.css" rel="stylesheet" />
+    <link rel="icon" type="~/images/jj.png" href="jj.png" />
+    <title>Paracelsoft</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="home-content">
+        <div class="overview-boxes">
+            <a asp-action="Create">Crear usuarios</a>
+        </div>
+
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="sales-details">
+                    @if (@Model != null && @Model.Any())
+                    {
+                        <table class="details">
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Nombre</th>
+                                <th>Direccion</th>
+                                <th>Telefono</th>
+                                <th>Acciones</th>
+                            </tr>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td>@user.Cedula</td>
+                                    <td>@user.Nombre</td>
+                                    <td>@user.Direccion</td>
+                                    <td>@user.Telefono</td>
+                                    <td>
+                                        <a asp-controller="Clientes" asp-action="Edit" asp-route-id="@user.Id">Editar</a> |
+                                        <a asp-controller="Clientes" asp-action="Delete" asp-route-id="@user.Id">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

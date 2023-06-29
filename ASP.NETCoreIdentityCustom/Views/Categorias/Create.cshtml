@@ -1,0 +1,37 @@
+﻿@model ASP.NETCoreIdentityCustom.Models.Categoria
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Crear Categoria</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreCategoria" class="control-label"></label>
+                <input asp-for="NombreCategoria" class="form-control" />
+                <span asp-validation-for="NombreCategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorCategoria" class="control-label"></label>
+                <input asp-for="ColorCategoria" class="form-control" />
+                <span asp-validation-for="ColorCategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                <a class="btn btn-outline-primary" href="@Url.Action("Index")">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
